@@ -7,6 +7,39 @@ services:
       - --config
       - /freqtrade/user_data/config.json
     volumes:
-      - ./user_data:/freqtrade/user_data
+      - type: bind
+        source: ./user_data/config.json
+        target: /freqtrade/user_data/config.json
+        read_only: true
+        content: |
+          {
+            "$schema": "https://schema.freqtrade.io/schema.json",
+            "dry_run": true,
+            "exchange": {
+              "name": "binance",
+              "api_key": "",
+              "secret": "",
+              "ccxt_config": {},
+              "ccxt_async_config": {},
+              "pair_whitelist": [],
+              "pair_blacklist": []
+            },
+            "dataformat_ohlcv": "feather",
+            "dataformat_trades": "feather",
+            "api_server": {
+              "enabled": true,
+              "listen_ip_address": "0.0.0.0",
+              "listen_port": 8080,
+              "verbosity": "error",
+              "enable_openapi": false,
+              "jwt_secret_key": "siftalpha-freqtrade-safe-pilot-jwt-key-2026",
+              "CORS_origins": [],
+              "username": "siftalpha-pilot",
+              "password": "siftalpha-safe-nontrading-pilot"
+            },
+            "bot_name": "siftalpha-freqtrade-safe",
+            "initial_state": "stopped",
+            "force_entry_enable": false
+          }
     expose:
       - "8080"
