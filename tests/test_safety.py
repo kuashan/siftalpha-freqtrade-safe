@@ -21,6 +21,7 @@ class SafetyGate(unittest.TestCase):
         self.assertFalse(config["force_entry_enable"])
         self.assertEqual(config["exchange"]["api_key"], "")
         self.assertEqual(config["exchange"]["secret"], "")
+        self.assertEqual(config["exchange"]["pair_whitelist"], ["BTC/USDT"])
         self.assertTrue(config["api_server"]["enabled"])
         self.assertEqual(config["api_server"]["listen_ip_address"], "0.0.0.0")
         self.assertEqual(config["api_server"]["listen_port"], 8080)
