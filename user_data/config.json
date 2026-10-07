@@ -7,7 +7,9 @@
     "secret": "",
     "ccxt_config": {},
     "ccxt_async_config": {},
-    "pair_whitelist": [],
+    "pair_whitelist": [
+      "BTC/USDT"
+    ],
     "pair_blacklist": []
   },
   "dataformat_ohlcv": "feather",
